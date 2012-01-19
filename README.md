@@ -31,13 +31,13 @@ Send a message:
 	);
 	$result = $connection->post('statuses/update', $data);
 
-More information about Twitter OAuth methods available on [Twitter Developer Page](http://dev.twitter.com).
+More information about Twitter API methods available on [Twitter Developer Page](http://dev.twitter.com).
 
 In addition there is sample authentication controller in the repository. Please refer to controller directory.
 
 Feedback
 --------
 
-Library related issues should be published in [the library issue tracker](https://github.com/abraham/twitteroauth/issues).
+Library related issues should be send to [official issue tracker](https://github.com/abraham/twitteroauth/issues).
 
 Any other question are welcome [here](https://github.com/MunGell/Codeigniter-TwitterOAuth/issues).
