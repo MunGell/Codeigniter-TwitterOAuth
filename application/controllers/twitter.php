@@ -27,17 +27,17 @@ class Twitter extends CI_Controller
 		if($this->session->userdata('access_token') && $this->session->userdata('access_token_secret'))
 		{
 			// If user already logged in
-			$connection = $this->twitteroauth->create($this->config->item('twitter_consumer_token'), $this->config->item('twitter_consumer_secret'), $this->session->userdata('access_token'),  $this->session->userdata('access_token_secret'));
+			$this->connection = $this->twitteroauth->create($this->config->item('twitter_consumer_token'), $this->config->item('twitter_consumer_secret'), $this->session->userdata('access_token'),  $this->session->userdata('access_token_secret'));
 		}
 		elseif($this->session->userdata('request_token') && $this->session->userdata('request_token_secret'))
 		{
 			// If user in process of authentication
-			$connection = $this->twitteroauth->create($this->config->item('twitter_consumer_token'), $this->config->item('twitter_consumer_secret'), $this->session->userdata('request_token'), $this->session->userdata('request_token_secret'));
+			$this->connection = $this->twitteroauth->create($this->config->item('twitter_consumer_token'), $this->config->item('twitter_consumer_secret'), $this->session->userdata('request_token'), $this->session->userdata('request_token_secret'));
 		}
 		else
 		{
 			// Unknown user
-			$connection = $this->twitteroauth->create($this->config->item('twitter_consumer_token'), $this->config->item('twitter_consumer_secret'));
+			$this->connection = $this->twitteroauth->create($this->config->item('twitter_consumer_token'), $this->config->item('twitter_consumer_secret'));
 		}
 	}
 	
@@ -56,14 +56,14 @@ class Twitter extends CI_Controller
 		else
 		{
 			// Making a request for request_token
-			$request_token = $connection->getRequestToken(base_url('/twitter/callback'));
+			$request_token = $this->connection->getRequestToken(base_url('/twitter/callback'));
 
 			$this->session->set_userdata('request_token', $request_token['oauth_token']);
 			$this->session->set_userdata('request_token_secret', $request_token['oauth_token_secret']);
 			
-			if($connection->http_code == 200)
+			if($this->connection->http_code == 200)
 			{
-				$url = $connection->getAuthorizeURL($request_token);
+				$url = $this->connection->getAuthorizeURL($request_token);
 				redirect($url);
 			}
 			else
@@ -88,9 +88,9 @@ class Twitter extends CI_Controller
 		}
 		else
 		{
-			$access_token = $connection->getAccessToken($this->input->get('oauth_verifier'));
+			$access_token = $this->connection->getAccessToken($this->input->get('oauth_verifier'));
 		
-			if ($connection->http_code == 200)
+			if ($this->connection->http_code == 200)
 			{
 				$this->session->set_userdata('access_token', $access_token['oauth_token']);
 				$this->session->set_userdata('access_token_secret', $access_token['oauth_token_secret']);
@@ -122,7 +122,7 @@ class Twitter extends CI_Controller
 		{
 			if($this->session->userdata('access_token') && $this->session->userdata('access_token_secret'))
 			{
-				$content = $connection->get('account/verify_credentials');
+				$content = $this->connection->get('account/verify_credentials');
 				if(isset($content->error))
 				{
 					// Most probably, authentication problems. Begin authentication process again.
@@ -135,7 +135,7 @@ class Twitter extends CI_Controller
 						'status' => $message,
 						'in_reply_to_status_id' => $in_reply_to
 					);
-					$result = $connection->post('statuses/update', $data);
+					$result = $this->connection->post('statuses/update', $data);
 
 					if(!isset($result->error))
 					{
