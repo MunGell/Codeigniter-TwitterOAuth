@@ -27,17 +27,17 @@ class Twitter extends CI_Controller
 		if($this->session->userdata('access_token') && $this->session->userdata('access_token_secret'))
 		{
 			// If user already logged in
-			$connection = $this->twitteroauth->create($this->config->item('twitter_consumer'), $this->config->item('twitter_consumer_secret'), $this->session->userdata('access_token'),  $this->session->userdata('access_token_secret'));
+			$connection = $this->twitteroauth->create($this->config->item('twitter_consumer_token'), $this->config->item('twitter_consumer_secret'), $this->session->userdata('access_token'),  $this->session->userdata('access_token_secret'));
 		}
 		elseif($this->session->userdata('request_token') && $this->session->userdata('request_token_secret'))
 		{
 			// If user in process of authentication
-			$connection = $this->twitteroauth->create($this->config->item('twitter_consumer'), $this->config->item('twitter_consumer_secret'), $this->session->userdata('request_token'), $this->session->userdata('request_token_secret'));
+			$connection = $this->twitteroauth->create($this->config->item('twitter_consumer_token'), $this->config->item('twitter_consumer_secret'), $this->session->userdata('request_token'), $this->session->userdata('request_token_secret'));
 		}
 		else
 		{
 			// Unknown user
-			$connection = $this->twitteroauth->create($this->config->item('twitter_consumer'), $this->config->item('twitter_consumer_secret'));
+			$connection = $this->twitteroauth->create($this->config->item('twitter_consumer_token'), $this->config->item('twitter_consumer_secret'));
 		}
 	}
 	
