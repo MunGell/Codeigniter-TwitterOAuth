@@ -32,7 +32,7 @@ class Twitter extends CI_Controller
 		elseif($this->session->userdata('request_token') && $this->session->userdata('request_token_secret'))
 		{
 			// If user in process of authentication
-			$connection = $this->twitteroauth->create($this->config->item('twitter_consumer'), $this->config->item('twitter_secret'), $this->session->userdata('request_token'), $this->session->userdata('request_token_secret'));
+			$connection = $this->twitteroauth->create($this->config->item('twitter_consumer'), $this->config->item('twitter_consumer_secret'), $this->session->userdata('request_token'), $this->session->userdata('request_token_secret'));
 		}
 		else
 		{
