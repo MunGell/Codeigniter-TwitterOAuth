@@ -40,4 +40,4 @@ Feedback
 
 Library related issues should be send to [official issue tracker](https://github.com/abraham/twitteroauth/issues).
 
-Any other question are welcome [here](https://github.com/MunGell/Codeigniter-TwitterOAuth/issues).
+Any other questions are welcome [here](https://github.com/MunGell/Codeigniter-TwitterOAuth/issues).
