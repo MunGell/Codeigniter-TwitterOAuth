@@ -1,10 +1,10 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 /**
  * Twitter OAuth library.
  * Sample controller.
  * Requirements: enabled Session library, enabled URL helper
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Twitter extends CI_Controller
 {
