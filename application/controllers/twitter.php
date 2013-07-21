@@ -3,6 +3,7 @@
  * Twitter OAuth library.
  * Sample controller.
  * Requirements: enabled Session library, enabled URL helper
+ * Please note that this sample controller is just an example of how you can use the library.
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -123,7 +124,7 @@ class Twitter extends CI_Controller
 			if($this->session->userdata('access_token') && $this->session->userdata('access_token_secret'))
 			{
 				$content = $this->connection->get('account/verify_credentials');
-				if(isset($content->error))
+				if(isset($content->errors))
 				{
 					// Most probably, authentication problems. Begin authentication process again.
 					$this->reset_session();
@@ -137,7 +138,7 @@ class Twitter extends CI_Controller
 					);
 					$result = $this->connection->post('statuses/update', $data);
 
-					if(!isset($result->error))
+					if(!isset($result->errors))
 					{
 						// Everything is OK
 						redirect(base_url('/'));
