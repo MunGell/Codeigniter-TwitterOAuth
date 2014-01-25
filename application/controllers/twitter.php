@@ -24,6 +24,10 @@ class Twitter extends CI_Controller
 		$this->load->library('twitteroauth');
 		// Loading twitter configuration.
 		$this->config->load('twitter');
+		// Loading session library to access the session
+		$this->load->library('session');
+		// Loading url helper library to use base_url and redirect function 
+		$this->load->helper('url'); 
 		
 		if($this->session->userdata('access_token') && $this->session->userdata('access_token_secret'))
 		{
