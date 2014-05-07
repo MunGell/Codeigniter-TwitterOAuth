@@ -1,10 +1,14 @@
 Codeigniter-TwitterOauth library integration
 ============================================
 
+[![Project Status](http://stillmaintained.com/MunGell/Codeigniter-TwitterOAuth.png)](http://stillmaintained.com/MunGell/Codeigniter-TwitterOAuth)
+
 Description
 -----------
 
 This is [TwitterOAuth PHP library](https://github.com/abraham/twitteroauth) by Abraham Williams slightly changed for Codeigniter integration as library.
+
+Please note that this project is not actively maintained any more.
 
 More information about Codeigniter libraries available on [Codeigniter Documentation](http://codeigniter.com/user_guide).
 
