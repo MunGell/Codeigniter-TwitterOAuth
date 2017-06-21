@@ -42,6 +42,6 @@ In addition there is sample authentication controller in the repository. Please 
 Feedback
 --------
 
-Library related issues should be send to [official issue tracker](https://github.com/abraham/twitteroauth/issues).
+Library related issues should be sent to [official issue tracker](https://github.com/abraham/twitteroauth/issues).
 
 Any other questions are welcome [here](https://github.com/MunGell/Codeigniter-TwitterOAuth/issues).
